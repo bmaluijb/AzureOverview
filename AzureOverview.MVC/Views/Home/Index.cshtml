@@ -1,0 +1,112 @@
+﻿@using AzureOverview.Data;
+@model List<Service>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+@{
+    var category = "";
+}
+
+@if (Model.Count > 0)
+{
+
+    foreach (var service in Model)
+    {
+
+    @if (category != service.Category)
+    {
+        category = service.Category;
+
+        @if (!string.IsNullOrEmpty(category))
+        {
+            @:</div>
+        }
+
+        @:<div class="row" id="@category">
+            <div style="text-align:center">
+                <h3>@category</h3>
+                <hr style="width:200px;border-color:#023F50;border-width:2px" />
+            </div>
+
+    }
+
+        int cutoffLength = 200;
+        string status;
+
+    <div class="col-md-3 serviceDiv" id="service-@service.Id">
+        <h4 style="color:#F77207">@service.Name</h4>
+
+        @if (service.Description.Length < 200)
+        {
+            cutoffLength = service.Description.Length;
+        }
+        <p>@service.Description.Substring(0, cutoffLength)...</p>
+
+        <img alt="Image @service.Name" src="@service.ImageUrl" width="35px" height="35px" style="float:left" />
+
+
+        @if (service.Status == "Generally Available")
+        {
+            status = "GA";
+        }
+        else if (service.Status == "Public Preview")
+        {
+            status = "PREVIEW";
+        }
+        else
+        {
+            status = service.Status;
+        }
+
+        <p style="float:left;padding-left:25px;padding-top:10px;" class="orangeBold">@status</p>
+        <br />
+        <br />
+        <div id="info-@service.Id" hidden>
+
+            <table>
+                <tr>
+                    <td class="orangeBold">Info:</td>
+                    <td>@service.Name <a href="@service.Url" target="_blank">(More info)</a></td>
+                </tr>
+                <tr>
+                    <td class="orangeBold">Status:</td>
+                    <td>@service.Status</td>
+                </tr>
+                <tr>
+                    <td class="orangeBold" style="padding-right:15px">Preview date: </td>
+                    <td>
+                        @if (service.PublicPreviewDate.HasValue)
+                        {
+                            @service.PublicPreviewDate.Value.ToString("dd MMM yyyy");
+                        }
+                        else
+                        {
+                            @:?
+                        }
+                    </td>
+                </tr>
+                <tr>
+                    <td class="orangeBold">GA date:</td>
+                    <td>
+                        @if (service.GeneralAvailabilityDate.HasValue)
+                        {
+                            @service.GeneralAvailabilityDate.Value.ToString("dd MMM yyyy");
+                        }
+                        else
+                        {
+                            @:?
+                        }
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    }
+}
+else
+{
+    <p>No services found. </p>
+}
+
+

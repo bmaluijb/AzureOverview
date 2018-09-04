@@ -1,0 +1,171 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification\ 
+for details on configuring this project to bundle and minify static web assets. */
+body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Wrapping element */
+/* Set some basic padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Carousel */
+.carousel-caption p {
+    font-size: 20px;
+    line-height: 1.4;
+}
+
+/* Make .svg files in the carousel display properly in older browsers */
+.carousel-inner .item img[src$=".svg"] {
+    width: 100%;
+}
+
+/* QR code generator */
+#qrCode {
+    margin: 15px;
+}
+
+/* Hide/rearrange for smaller screens */
+@media screen and (max-width: 767px) {
+    /* Hide captions */
+    .carousel-caption {
+        display: none;
+    }
+}
+
+.navbarcustom {
+    background-color: #023F50;
+    min-height: 100px;
+    margin-bottom: 0px;
+}
+
+.searchbar {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.customBodyContent {
+    position: relative;
+    margin-top: 200px;
+}
+
+@media (max-width: 768px) {
+    #azurelogo {
+        display: none;
+    }
+
+    .customBodyContent {
+        margin-top: 240px;
+    }
+}
+
+@media (min-width: 768px) {
+    .searchbar {
+        width: 750px;
+    }
+
+    #azurelogo {
+        display: block;
+    }
+}
+
+@media (min-width: 992px) {
+    .searchbar {
+        width: 970px;
+    }
+
+    #azurelogo {
+        display: block;
+    }
+
+    .customBodyContent {
+        margin-top: 200px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .searchbar {
+        width: 1170px;
+    }
+
+    #azurelogo {
+        display: block;
+    }
+
+    .customBodyContent {
+        margin-top: 200px;
+    }
+}
+
+.orangeBold {
+    font-weight: 600;
+    color: #F77207;
+}
+
+.serviceDiv {
+    padding-right: 20px;
+    padding-left: 50px;
+    padding-bottom: 50px;
+    color: #023F50;
+    cursor: pointer;
+}
+
+.radioButtons {
+    float: left;
+    padding-bottom: 20px;
+    padding-right: 50px;
+}
+
+.searchBox {
+    color: #023F50;
+    float: left;
+    padding-bottom: 20px;
+    padding-right: 50px;
+}
+
+.clearResults a {
+    color: white;
+    float: left;
+    padding-bottom: 15px;
+}
+
+.autocomplete {
+    /*the container must be positioned relative:*/
+    position: relative;
+    display: inline-block;
+}
+
+.autocomplete-items {
+    position: absolute;
+    border: 1px solid #d4d4d4;
+    border-bottom: none;
+    border-top: none;
+    z-index: 99;
+    /*position the autocomplete items to be the same width as the container:*/
+    top: 100%;
+    left: 0;
+    right: 0;
+}
+
+    .autocomplete-items div {
+        padding: 10px;
+        cursor: pointer;
+        background-color: #fff;
+        border-bottom: 1px solid #d4d4d4;
+    }
+
+        .autocomplete-items div:hover {
+            /*when hovering an item:*/
+            background-color: #e9e9e9;
+        }
+
+.autocomplete-active {
+    /*when navigating through the items using the arrow keys:*/
+    background-color: DodgerBlue !important;
+    color: #ffffff;
+}
