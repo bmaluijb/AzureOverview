@@ -4,7 +4,16 @@
     <TargetFramework>netcoreapp2.1</TargetFramework>
     <ApplicationInsightsResourceId>/subscriptions/c7999d44-c30a-4f05-b88f-a9bc82897a2a/resourcegroups/AzureOverview_WE/providers/microsoft.insights/components/theazureoverview</ApplicationInsightsResourceId>
     <ApplicationInsightsAnnotationResourceId>/subscriptions/c7999d44-c30a-4f05-b88f-a9bc82897a2a/resourcegroups/AzureOverview_WE/providers/microsoft.insights/components/theazureoverview</ApplicationInsightsAnnotationResourceId>
+    <UserSecretsId>75809728-7510-49f5-bc0c-e025ff4bab90</UserSecretsId>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Content Remove="bundleconfig.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="bundleconfig.json" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.1.1" />
