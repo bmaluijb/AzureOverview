@@ -1,18 +1,21 @@
-﻿@{
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+
+@inject IViewLocalizer Localizer
+
+@{
     ViewData["Title"] = "FAQ";
 }
 <h2>@ViewData["Title"].</h2>
 
 
-<h3>What is this website?</h3>
+<h3>@Localizer["Faq1"]</h3>
 <p>
-    In my job, I work with Microsoft Azure a lot. I found it difficult to keep an overview of which service Azure provides, what they do, and what their status is.
-    This website helps me to keep track of the platform and hopefully helps other people to do the same.
+    @Localizer["Faq2"]
 </p>
 
-<h3>Isn't there a Microsoft website that provides the same info?</h3>
+<h3>@Localizer["Faq3"]</h3>
 <p>
-    Not really. There are lots of Microsoft websites that provide parts of the information, like:
+    @Localizer["Faq4"]
     <ul>
         <li>
             <a href="https://azure.microsoft.com/en-us/services/" target="_blank">Azure Cloud Directory</a>
@@ -32,32 +35,28 @@
         </li>
     </ul>
 
-    Unfortunately, these websites only contain parts of the story, are incomplete or out of date. That's why I'm gathering all of that information in one place.
+    @Localizer["Faq5"]
 </p>
 
-<h3>What info is on the website?</h3>
+<h3>@Localizer["Faq6"]</h3>
 <p>
-    I show all main Azure services and their status that is publically known.
-    I only list main Azure services, not service tiers or marketplace apps or capabilities.
-    
-    If you feel that I missed something or that info is incorrect, please let me <a href="/Feedback">know.</a>
+    @Localizer["Faq7"]
 </p>
 
-<h3>What do the different statuses mean?</h3>
+<h3>@Localizer["Faq8"]</h3>
 <p>
     <ul>
         <li>
             Public Preview:
         </li>
         <li style="margin-left:25px">
-            Means that the service is in public beta and can be tried out by anyone with an Azure subscription. You can often use these services at a discount as long as they are in preview.
+            @Localizer["Faq9"]
         </li>
         <li>
             Generally Available (or GA):
         </li>
-
         <li style="margin-left:25px">
-            Means that the service is in production and can be used by anyone with an Azure subscription.
-        </li>        
+            @Localizer["Faq10"]
+        </li>
     </ul>
 </p>

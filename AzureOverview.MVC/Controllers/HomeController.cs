@@ -1,12 +1,11 @@
-﻿using System;
+﻿using AzureOverview.Data;
+using AzureOverview.Data.Interfaces;
+using AzureOverview.Models;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Localization;
+using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using AzureOverview.Models;
-using AzureOverview.Data.Interfaces;
-using AzureOverview.Data;
 
 namespace AzureOverview.Controllers
 {
@@ -20,7 +19,7 @@ namespace AzureOverview.Controllers
         }
 
         public IActionResult Index()
-        {    
+        {
             return View(_service.GetAllServices());
         }
 
@@ -29,7 +28,7 @@ namespace AzureOverview.Controllers
         {
             List<Service> services;
 
-            if(!string.IsNullOrEmpty(status) || !string.IsNullOrEmpty(searchterm))
+            if (!string.IsNullOrEmpty(status) || !string.IsNullOrEmpty(searchterm))
             {
                 services = _service.SearchForServices(status, searchterm);
 
@@ -70,6 +69,22 @@ namespace AzureOverview.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+        public IActionResult ChangeCulture(string cultureString)
+        {
+            try
+            {
+                Response.Cookies.Delete(CookieRequestCultureProvider.DefaultCookieName);
+            }
+            catch { }
+
+
+            Response.Cookies.Append(CookieRequestCultureProvider.DefaultCookieName, 
+                "c=" + cultureString + "|uic=" + cultureString);
+
+            return Redirect(Request.Headers["Referer"].ToString());
+
         }
     }
 }

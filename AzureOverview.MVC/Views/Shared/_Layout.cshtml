@@ -1,4 +1,9 @@
 ﻿@inject Microsoft.ApplicationInsights.AspNetCore.JavaScriptSnippet JavaScriptSnippet
+@inject IViewLocalizer Localizer
+
+@using System.Globalization;
+@using Microsoft.AspNetCore.Mvc.Localization
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,11 +32,11 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a asp-area="" asp-controller="Home" asp-action="Index">
+                <a href="\Home\Index">
                     <div style="color:white;float:left;padding-left:20px">
                         <br />
                         <p style="font-weight:700; font-size:23px">AZURE OVERVIEW</p>
-                        <p>Get an overview of all Azure services</p>
+                        <p>@Localizer["Title"]</p>
 
                     </div>
                     <div style="float:left; padding-left:20px">
@@ -40,13 +45,30 @@
                     </div>
                 </a>
             </div>
-
-
             <div class="navbar-collapse collapse" style="float:right;">
+
                 <ul class="nav navbar-nav" style="float:right;">
                     <br />
-                    <li><a asp-area="" asp-controller="Home" asp-action="Faq">FAQs</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Feedback">Feedback</a></li>
+                    <li><a href="/Home/Faq">FAQs</a></li>
+                    <li><a href="/Home/Feedback">Feedback</a></li>
+                    <li>
+                        <form action="/Home/ChangeCulture" method="post" id="cultureform">
+                            <div style="padding-top:15px;padding-left:10px">
+                                <select id="cultureString" name="cultureString">
+                                    @if (CultureInfo.CurrentCulture.Name == "en")
+                                    {
+                                        <option value="en" selected="selected">English</option>
+                                        <option value="nl">Dutch</option>
+                                    }
+                                    else if (CultureInfo.CurrentCulture.Name == "nl")
+                                    {
+                                        <option value="en">English</option>
+                                        <option value="nl" selected="selected">Dutch</option>
+                                    }
+                                </select>
+                            </div>
+                        </form>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -54,38 +76,38 @@
         <div class="searchbar" style="height:50px;color:white;">
             <hr />
             @using (Html.BeginForm("Index", "Home", FormMethod.Post))
-                {
-            <div class="radioButtons">
-                @if (!string.IsNullOrWhiteSpace(ViewBag.Status))
             {
-                if (ViewBag.Status == "Generally Available")
-                {
-                        @:<input type="radio" id="status" name="status" value="Public Preview" style="margin: 0 10px 0 10px;">Public Preview
-                        @:<input type="radio" id="status" name="status" checked="checked" value="Generally Available" style="margin: 0 10px 0 10px;"> Generally Available
+                <div class="radioButtons">
+                    @if (!string.IsNullOrWhiteSpace(ViewBag.Status))
+                    {
+                        if (ViewBag.Status == "Generally Available")
+                        {
+                            @:<input type="radio" id="status" name="status" value="Public Preview" style="margin: 0 10px 0 10px;">Public Preview
+                            @:<input type="radio" id="status" name="status" checked="checked" value="Generally Available" style="margin: 0 10px 0 10px;"> Generally Available
+                        }
+                        else
+                        {
+                            @:<input type="radio" id="status" name="status" checked="checked" value="Public Preview" style="margin: 0 10px 0 10px;">Public Preview
+                            @:<input type="radio" id="status" name="status" value="Generally Available" style="margin: 0 10px 0 10px;"> Generally Available
+                        }
                     }
                     else
                     {
-                        @:<input type="radio" id="status" name="status" checked="checked" value="Public Preview" style="margin: 0 10px 0 10px;">Public Preview
+                        @:<input type="radio" id="status" name="status" value="Public Preview" style="margin: 0 10px 0 10px;">Public Preview
                         @:<input type="radio" id="status" name="status" value="Generally Available" style="margin: 0 10px 0 10px;"> Generally Available
                     }
-                }
-                else
-                {
-                    @:<input type="radio" id="status" name="status" value="Public Preview" style="margin: 0 10px 0 10px;">Public Preview
-                    @:<input type="radio" id="status" name="status" value="Generally Available" style="margin: 0 10px 0 10px;"> Generally Available
-                }
-            </div>
-            <div class="searchBox">
-                <div class="autocomplete" style="width:300px;">
-                    <input id="searchTerm" autocomplete="off" type="text" name="searchterm" style="width:300px;" />
                 </div>
-                <input type="submit" name="searchbutton" value="Search" style="background-color:white">
-            </div>
+                <div class="searchBox">
+                    <div class="autocomplete" style="width:300px;">
+                        <input id="searchTerm" autocomplete="off" type="text" name="searchterm" style="width:300px;" />
+                    </div>
+                    <input type="submit" name="searchbutton" value="@Localizer["SearchButton"]" style="background-color:white">
+                </div>
 
-            @if (!string.IsNullOrWhiteSpace(ViewBag.Status) || !string.IsNullOrWhiteSpace(ViewBag.SearchTerm))
-            {
-                <div class="clearResults"><a href="\">Clear results</a></div>
-            }
+                @if (!string.IsNullOrWhiteSpace(ViewBag.Status) || !string.IsNullOrWhiteSpace(ViewBag.SearchTerm))
+                {
+                    <div class="clearResults"><a href="\">Clear results</a></div>
+                }
             }
         </div>
     </nav>

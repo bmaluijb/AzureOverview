@@ -10,6 +10,8 @@ $(document).ready(function () {
 
     SubmitRadioButtons();
 
+    SubmitCultureSelect();
+
     GetServiceNames();
 
     SubmitSearchOnEnter();
@@ -31,6 +33,12 @@ function ShowHideInfo() {
 function SubmitRadioButtons() {
     $('input[name=status]').change(function () {
         $('form').submit();
+    });
+}
+
+function SubmitCultureSelect() {
+    $('select[id=cultureString]').change(function () {
+        $('form[id=cultureform]').submit();
     });
 }
 
