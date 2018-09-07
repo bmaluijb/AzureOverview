@@ -34,13 +34,15 @@ namespace AzureOverview
             });
 
             services.AddDbContext<AzureOverviewContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("DBConnection")));
+                options.UseSqlServer(Configuration["DBConnection"]));
 
             services.AddDistributedRedisCache(option =>
             {
-                option.Configuration = Configuration.GetConnectionString("RedisConnection");
+                option.Configuration = Configuration["RedisConnection"];
                 option.InstanceName = "master";
             });
+
+           
 
             services.AddTransient<IServicesService, ServicesService>();
 
