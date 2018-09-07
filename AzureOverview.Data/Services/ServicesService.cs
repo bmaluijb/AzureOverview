@@ -79,6 +79,9 @@ namespace AzureOverview.Data.Services
 
         }
 
-
+        public void ClearCache()
+        {
+            _cache.Remove("services");
+        }
     }
 }

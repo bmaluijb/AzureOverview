@@ -1,5 +1,6 @@
 ﻿@using AzureOverview.Data;
 @using Microsoft.AspNetCore.Mvc.Localization
+@using System.Globalization;
 
 @inject IViewLocalizer Localizer
 
@@ -14,7 +15,7 @@
 
 @if (Model.Count > 0)
 {
-
+    int count = 0;
     foreach (var service in Model)
     {
 
@@ -27,25 +28,44 @@
                 @:</div>
             }
 
-            @:<div class="row" id="@category">
-                <div style="text-align:center">
-                    <h3>@category</h3>
-                    <hr style="width:200px;border-color:#023F50;border-width:2px" />
-                </div>
+            @:<div class="row" id="@category" >
+    <div style="text-align:center">
+        <h3>@category</h3>
+        <hr style="width:200px;border-color:#023F50;border-width:2px" />
+    </div>
+    count = 0;
+}
 
-            }
+        
+        if (count == 3)
+        {
+            <div class="w-100"></div>
+        }
 
-        int cutoffLength = 200;
+        count++;
+        int cutoffLength = 160;
         string status;
 
-        <div class="col-md-3 serviceDiv" id="service-@service.Id">
+        <div class="col serviceDiv" id="service-@service.Id">
             <h4 style="color:#F77207">@service.Name</h4>
 
-            @if (service.Description.Length < 200)
+            @if (CultureInfo.CurrentCulture.Name == "en")
             {
-                cutoffLength = service.Description.Length;
+
+                if (service.Description.Length < 160)
+                {
+                    cutoffLength = service.Description.Length;
+                }
+                <p>@service.Description.Substring(0, cutoffLength)...</p>
             }
-            <p>@service.Description.Substring(0, cutoffLength)...</p>
+            else if (CultureInfo.CurrentCulture.Name == "nl" && !string.IsNullOrEmpty(service.Description_nl))
+            {
+                if (service.Description_nl.Length < 160)
+                {
+                    cutoffLength = service.Description_nl.Length;
+                }
+                <p>@service.Description_nl.Substring(0, cutoffLength)...</p>
+            }
 
             <img alt="Image @service.Name" src="@service.ImageUrl" width="35px" height="35px" style="float:left" />
 
@@ -110,7 +130,7 @@
 }
 else
 {
-        <p>@Localizer["noservices"] </p>
+    <p>@Localizer["noservices"] </p>
 }
 
 

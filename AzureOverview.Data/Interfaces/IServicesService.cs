@@ -7,5 +7,7 @@ namespace AzureOverview.Data.Interfaces
         List<Service> GetAllServices();
 
         List<Service> SearchForServices(string status, string searchterm);
+
+        void ClearCache();
     }
 }

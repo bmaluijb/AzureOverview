@@ -14,6 +14,8 @@ namespace AzureOverview.Data
 
         public string Description { get; set; }
 
+        public string Description_nl { get; set; }
+
         public string Status { get; set; }
 
         public DateTime? PublicPreviewDate { get; set; }

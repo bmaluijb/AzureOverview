@@ -86,5 +86,12 @@ namespace AzureOverview.Controllers
             return Redirect(Request.Headers["Referer"].ToString());
 
         }
+
+        public IActionResult ClearCache()
+        {
+            _service.ClearCache();
+
+            return RedirectToAction("Index");
+        }
     }
 }
