@@ -9,6 +9,8 @@ using System.Diagnostics;
 
 namespace AzureOverview.Controllers
 {
+
+    
     public class HomeController : Controller
     {
         private IServicesService _service;
@@ -18,6 +20,7 @@ namespace AzureOverview.Controllers
             _service = service;
         }
 
+        [ResponseCache(Duration = 86400)]
         public IActionResult Index()
         {
             return View(_service.GetAllServices());
@@ -54,6 +57,7 @@ namespace AzureOverview.Controllers
         {
             return View();
         }
+
 
         public IActionResult Faq()
         {

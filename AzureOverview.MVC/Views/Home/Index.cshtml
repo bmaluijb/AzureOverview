@@ -60,7 +60,7 @@
                 <p>@service.Description_nl.Substring(0, cutoffLength)...</p>
             }
 
-            <img alt="Image @service.Name" src="@service.ImageUrl" width="35px" height="35px" style="float:left" />
+            <img alt="Image @service.Name" src="@service.ImageUrl.Replace(".png", ".jpg")" width="35px" height="35px" style="float:left" />
 
 
             @if (service.Status == "Generally Available")
