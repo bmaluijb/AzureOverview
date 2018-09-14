@@ -170,3 +170,15 @@ body {
     background-color: DodgerBlue !important;
     color: #ffffff;
 }
+
+
+.toggleMe {
+    -webkit-transition: height .25s ease;
+    -o-transition: height .25s ease;
+    transition: height .25s ease;
+    overflow: hidden;
+}
+
+    .toggleMe:not(.active) {
+        display: none;
+    }
