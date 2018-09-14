@@ -53,7 +53,7 @@ function ShowHideInfo() {
 
 function SubmitRadioButtons() {
     $('input[name=status]').change(function () {
-        $('form').submit();
+        $('form[id=searchform]').submit();
     });
 }
 

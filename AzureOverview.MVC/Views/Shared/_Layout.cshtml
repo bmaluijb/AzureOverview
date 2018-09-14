@@ -78,8 +78,8 @@
         <br />
         <div class="searchbar" style="height:50px;color:white;">
             <hr />
-            @using (Html.BeginForm("Index", "Home", FormMethod.Post))
-            {
+            <form action="/Home/Index" method="post" id="searchform">
+               
                 <div class="radioButtons">
                     @if (!string.IsNullOrWhiteSpace(ViewBag.Status))
                     {
@@ -111,8 +111,9 @@
                 {
                     <div class="clearResults"><a href="\">Clear results</a></div>
                 }
-            }
-        </div>
+                </form>
+                
+</div>
     </nav>
 
     <partial name="_CookieConsentPartial" />
