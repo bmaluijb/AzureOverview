@@ -23,7 +23,28 @@ function ShowHideInfo() {
         var id = $(this).attr('id');
         var nr = id.replace('service-', '');
 
-        $("div[id='info-" + nr + "']").slideToggle();
+        var container = document.getElementById("info-" + nr);
+
+        if (!container.classList.contains('active')) {
+            container.classList.add('active');
+            container.style.height = 'auto';
+
+            var height = container.clientHeight + "px";
+
+            container.style.height = '0px';
+
+            setTimeout(function () {
+                container.style.height = height;
+            }, 0);
+        } else {
+            container.style.height = '0px';
+
+            container.addEventListener('transitionend', function () {
+                container.classList.remove('active');
+            }, {
+                    once: true
+                });
+        }
 
     });
 }
