@@ -51,7 +51,7 @@
                 }
                 <p>@service.Description.Substring(0, cutoffLength)...</p>
             }
-            else if (CultureInfo.CurrentCulture.Name == "nl" && !string.IsNullOrEmpty(service.Description_nl))
+            else if (CultureInfo.CurrentCulture.Name == "nl")
             {
                 if (service.Description_nl.Length < 130)
                 {
