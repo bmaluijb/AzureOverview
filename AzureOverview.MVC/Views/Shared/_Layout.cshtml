@@ -48,38 +48,38 @@
         <div class="searchbar" style="height:50px;color:white;">
             <hr />
             @using (Html.BeginForm("Index", "Home", FormMethod.Post))
-                {
-            <div class="radioButtons">
-                @if (!string.IsNullOrWhiteSpace(ViewBag.Status))
             {
-                if (ViewBag.Status == "Generally Available")
-                {
-                        @:<input type="radio" id="status" name="status" value="Public Preview" style="margin: 0 10px 0 10px;">Public Preview
-                        @:<input type="radio" id="status" name="status" checked="checked" value="Generally Available" style="margin: 0 10px 0 10px;"> Generally Available
+                <div class="radioButtons">
+                    @if (!string.IsNullOrWhiteSpace(ViewBag.Status))
+                    {
+                        if (ViewBag.Status == "Generally Available")
+                        {
+                            @:<input type="radio" id="status" name="status" value="Public Preview" style="margin: 0 10px 0 10px;">Public Preview
+                            @:<input type="radio" id="status" name="status" checked="checked" value="Generally Available" style="margin: 0 10px 0 10px;"> Generally Available
+                        }
+                        else
+                        {
+                            @:<input type="radio" id="status" name="status" checked="checked" value="Public Preview" style="margin: 0 10px 0 10px;">Public Preview
+                            @:<input type="radio" id="status" name="status" value="Generally Available" style="margin: 0 10px 0 10px;"> Generally Available
+                        }
                     }
                     else
                     {
-                        @:<input type="radio" id="status" name="status" checked="checked" value="Public Preview" style="margin: 0 10px 0 10px;">Public Preview
+                        @:<input type="radio" id="status" name="status" value="Public Preview" style="margin: 0 10px 0 10px;">Public Preview
                         @:<input type="radio" id="status" name="status" value="Generally Available" style="margin: 0 10px 0 10px;"> Generally Available
                     }
-                }
-                else
-                {
-                    @:<input type="radio" id="status" name="status" value="Public Preview" style="margin: 0 10px 0 10px;">Public Preview
-                    @:<input type="radio" id="status" name="status" value="Generally Available" style="margin: 0 10px 0 10px;"> Generally Available
-                }
-            </div>
-            <div class="searchBox">
-                <div class="autocomplete" style="width:300px;">
-                    <input id="searchTerm" autocomplete="off" type="text" name="searchterm" style="width:300px;" />
                 </div>
-                <input type="submit" name="searchbutton" value="Search" style="background-color:white">
-            </div>
+                <div class="searchBox">
+                    <div class="autocomplete" style="width:300px;">
+                        <input id="searchTerm" autocomplete="off" type="text" name="searchterm" style="width:300px;" />
+                    </div>
+                    <input type="submit" name="searchbutton" value="Search" style="background-color:white">
+                </div>
 
-            @if (!string.IsNullOrWhiteSpace(ViewBag.Status) || !string.IsNullOrWhiteSpace(ViewBag.SearchTerm))
-            {
-                <div class="clearResults"><a href="\">Clear results</a></div>
-            }
+                @if (!string.IsNullOrWhiteSpace(ViewBag.Status) || !string.IsNullOrWhiteSpace(ViewBag.SearchTerm))
+                {
+                    <div class="clearResults"><a href="\">Clear results</a></div>
+                }
             }
         </div>
     </nav>
@@ -93,7 +93,12 @@
     <footer style="text-align:center">
         <p>&copy; 2018 - <a href="https://twitter.com/AzureBarry" target="_blank">@@AzureBarry</a></p>
     </footer>
-
+    <environment exclude="Development">
+        <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
+              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+    </environment>
     <environment include="Development">
         <script src="~/lib/jquery/dist/jquery.js"></script>
         <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
