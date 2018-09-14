@@ -4,6 +4,7 @@
     <TargetFramework>netcoreapp2.1</TargetFramework>
     <ApplicationInsightsResourceId>/subscriptions/c7999d44-c30a-4f05-b88f-a9bc82897a2a/resourcegroups/AzureOverview_WE/providers/microsoft.insights/components/theazureoverview</ApplicationInsightsResourceId>
     <ApplicationInsightsAnnotationResourceId>/subscriptions/c7999d44-c30a-4f05-b88f-a9bc82897a2a/resourcegroups/AzureOverview_WE/providers/microsoft.insights/components/theazureoverview</ApplicationInsightsAnnotationResourceId>
+    <UserSecretsId>bc940d3b-457a-4587-b7ef-826211656984</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
