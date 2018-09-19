@@ -263,3 +263,4 @@ __pycache__/
 *.pyc
 /AzureOverview.MVC/Properties/PublishProfiles
 /AzureOverview.MVC/wwwroot/lib/bootstrap/dist
+/NDependOut

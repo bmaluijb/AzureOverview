@@ -29,25 +29,26 @@
 <body>
     <nav class="navbar navbar-inverse navbar-fixed-top navbarcustom">
         <div class="container ">
+            <input type="checkbox" id="navbar-toggle-cbox">
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <label for="navbar-toggle-cbox" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
-                </button>
-                <a href="\Home\Index">
-                    <div style="color:white;float:left;padding-left:20px">
-                        <br />
-                        <p style="font-weight:700; font-size:23px">AZURE OVERVIEW</p>
-                        <p>@Localizer["Title"]</p>
+                    </label>
+                    <a href="\Home\Index">
+                        <div style="color:white;float:left;padding-left:20px">
+                            <br />
+                            <p style="font-weight:700; font-size:23px">AZURE OVERVIEW</p>
+                            <p>@Localizer["Title"]</p>
 
-                    </div>
-                    <div style="float:left; padding-left:20px">
-                        <br />
-                        <img src="https://overview.azureedge.net/cdn/Azure.png" alt="Azure Logo" id="azurelogo" height="60" width="80" />
-                    </div>
-                </a>
-            </div>
+                        </div>
+                        <div style="float:left; padding-left:20px">
+                            <br />
+                            <img src="https://overview.azureedge.net/cdn/Azure.png" alt="Azure Logo" id="azurelogo" height="60" width="80" />
+                        </div>
+                    </a>
+</div>
             <div class="navbar-collapse collapse" style="float:right;">
 
                 <ul class="nav navbar-nav" style="float:right;">
@@ -133,6 +134,7 @@
     </environment>
     <environment include="Development">
         <script src="https://overview.azureedge.net/cdn/zepto.min.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
         <script src="~/js/site.js" asp-append-version="true"></script>
     </environment>
     <environment exclude="Development">
