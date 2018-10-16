@@ -41,6 +41,7 @@ namespace AzureOverview
             {
                 option.Configuration = Configuration["RedisConnection"];
                 option.InstanceName = "master";
+                
             });
 
            

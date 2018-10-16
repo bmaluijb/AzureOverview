@@ -29,7 +29,8 @@ namespace AzureOverview
                     //Create Managed Service Identity token provider
                     var tokenProvider = new AzureServiceTokenProvider();
                     //Create the Key Vault client
-                    var kvClient = new KeyVaultClient((authority, resource, scope) => tokenProvider.KeyVaultTokenCallback(authority, resource, scope));
+                    var kvClient = new KeyVaultClient((authority, resource, scope) => tokenProvider.KeyVaultTokenCallback(
+                        authority, resource, scope));
                     //Add Key Vault to configuration pipeline
                     builder.AddAzureKeyVault(config["KeyVault:BaseUrl"], kvClient, new DefaultKeyVaultSecretManager());
                 }
