@@ -1,8 +1,8 @@
 ## Welcome to the Azure Overview project!
 
-This project contains the source code of the Azure Overview website (www.azureoverview.com) and accompanies the Pluralsight course: Microsoft Azure Developer: [Creating and Implementing a Detailed Design for Your Solution.](https://app.pluralsight.com/profile/author/barry-luijbregts)
+This project contains the source code of the Azure Overview website (www.azureoverview.com) and accompanies the Pluralsight course: Microsoft Azure Developer: [Creating and Implementing a Detailed Design for Your Solution.](https://app.pluralsight.com/library/courses/microsoft-azure-solution-detailed-design-creating/table-of-contents)
 
-![enter image description here](https://app.pluralsight.com/library/courses/microsoft-azure-solution-detailed-design-creating/table-of-contents)  
+![enter image description here](https://www.pluralsight.com/content/dam/pluralsight/newsroom/brand-assets/logos/pluralsight-logo-vrt-color-2.png)  
 
 You can download a copy of the code and follow along in the course.
 
