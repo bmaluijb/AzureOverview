@@ -25,6 +25,9 @@ function ShowHideInfo() {
         var id = $(this).attr('id');
         var nr = id.replace('service-', '');
 
+        var serviceName = $(this).find("h4").text();
+               
+
         var container = document.getElementById("info-" + nr);
 
         if (!container.classList.contains('active')) {
@@ -34,6 +37,9 @@ function ShowHideInfo() {
             var height = container.clientHeight + "px";
 
             container.style.height = '0px';
+
+            var dictionary = { "service": serviceName };
+            window.appInsights.trackEvent("ServiceClick", dictionary);  
 
             setTimeout(function () {
                 container.style.height = height;

@@ -1,6 +1,7 @@
 ﻿using AzureOverview.Data;
 using AzureOverview.Data.Interfaces;
 using AzureOverview.Models;
+using Microsoft.ApplicationInsights;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
@@ -8,11 +9,11 @@ using System.Collections.Generic;
 using System.Diagnostics;
 
 namespace AzureOverview.Controllers
-{
-
-    
+{    
     public class HomeController : Controller
     {
+        private TelemetryClient telemetry = new TelemetryClient();
+
         private IServicesService _service;
 
         public HomeController(IServicesService service)
@@ -38,11 +39,19 @@ namespace AzureOverview.Controllers
                 if (!string.IsNullOrEmpty(status))
                 {
                     ViewBag.Status = status;
+
+                    var dictionary = new Dictionary<string, string>();
+                    dictionary.Add("status", status);
+                    telemetry.TrackEvent("FilteredOnStatus", dictionary);
                 }
 
                 if (!string.IsNullOrEmpty(searchterm))
                 {
                     ViewBag.SearchTerm = searchterm;
+
+                    var dictionary = new Dictionary<string, string>();
+                    dictionary.Add("term", searchterm);
+                    telemetry.TrackEvent("Searched", dictionary);
                 }
             }
             else
