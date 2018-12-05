@@ -174,6 +174,8 @@ function GetServiceNames() {
         type: 'GET',
         url: '/api/Services',
         success: function (res, status, xhr) {
+            numberOfServices
+            document.getElementById("numberOfServices").innerHTML = res.length;            
 
             Autocomplete(document.getElementById("searchTerm"), res);
         },
@@ -194,8 +196,8 @@ function SubmitSearchOnEnter() {
         event.preventDefault();
         // Number 13 is the "Enter" key on the keyboard
         if (event.keyCode === 13) {
-
-            $('form').submit();
+       
+            $('form[id=searchform]').submit();
         }
     });
 }
